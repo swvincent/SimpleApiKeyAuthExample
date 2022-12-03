@@ -33,24 +33,15 @@ namespace SimpleApiKeyAuthExample.Authentication
             if (apiKeyToValidate != apiKey)
                 return Task.FromResult(AuthenticateResult.Fail("Invalid key."));
 
-            //TODO: Not sure what to do here - creating an arbitrary user for now
-            var pskUser = new IdentityUser("PSK");
-
-            return Task.FromResult(AuthenticateResult.Success(CreateTicket(pskUser)));
+            return Task.FromResult(AuthenticateResult.Success(CreateTicket()));
         }
 
-        private AuthenticationTicket CreateTicket(IdentityUser user)
+        private AuthenticationTicket CreateTicket()
         {
-            var claims = new[] {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Name, user.UserName)
-            };
-
-            var identity = new ClaimsIdentity(claims, Scheme.Name);
-            var principal = new ClaimsPrincipal(identity);
-            var ticket = new AuthenticationTicket(principal, Scheme.Name);
-
-            return ticket;
+            var principal = new ClaimsPrincipal(
+                new ClaimsIdentity(Array.Empty<Claim>(), this.Scheme.Name));
+            
+            return new AuthenticationTicket(principal, Scheme.Name);
         }
     }
 }
