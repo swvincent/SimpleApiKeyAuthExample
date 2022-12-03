@@ -1,4 +1,6 @@
-# Simple API Key Authentication Example for ASP.Net Core
+# SimpleApiKeyAuthExample
+
+Simple API Key Authentication Example for ASP.Net Core
 
 This is something I developed to learn and to provide a "proof of concept". It is an example of a very basic API Key authentication for ASP.Net Core.
 

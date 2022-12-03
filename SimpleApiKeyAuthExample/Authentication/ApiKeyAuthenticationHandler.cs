@@ -10,8 +10,6 @@ namespace SimpleApiKeyAuthExample.Authentication
 {
     class ApiKeyAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
-        private const string API_KEY_HEADER = "ApiKey";
-
         public ApiKeyAuthenticationHandler(
             IOptionsMonitor<AuthenticationSchemeOptions> options,
             ILoggerFactory logger,
@@ -22,13 +20,13 @@ namespace SimpleApiKeyAuthExample.Authentication
 
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
-            if (!Request.Headers.ContainsKey(API_KEY_HEADER))
+            if (!Request.Headers.ContainsKey(ApiKeyDefaults.ApiKeyHeader))
                 return Task.FromResult(AuthenticateResult.Fail("Header Not Found."));
 
-            string apiKeyToValidate = Request.Headers[API_KEY_HEADER];
+            string apiKeyToValidate = Request.Headers[ApiKeyDefaults.ApiKeyHeader];
 
             string apiKey = new ConfigurationBuilder().AddJsonFile("appsettings.json")
-                .Build().GetSection("AppSettings")[API_KEY_HEADER];
+                .Build().GetSection("AppSettings")[ApiKeyDefaults.ApiKeyHeader];
 
             if (apiKeyToValidate != apiKey)
                 return Task.FromResult(AuthenticateResult.Fail("Invalid key."));
