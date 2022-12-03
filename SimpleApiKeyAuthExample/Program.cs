@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.OpenApi.Models;
 using SimpleApiKeyAuthExample.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Simple API Key Example",
+        Description = "Simple API Key Authentication Example for ASP.Net Core"
+    });
+});
+
+builder.Services.AddApiKeySwagger();
 
 builder.Services
     .AddAuthentication(ApiKeyDefaults.AuthenticationScheme)

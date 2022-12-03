@@ -11,3 +11,4 @@ The folloiwng were helpful:
 - [Implementing Authentication in ASP.Net Core Web APIs](https://www.endpointdev.com/blog/2022/06/implementing-authentication-in-asp.net-core-web-apis/)
 - [Implementing Basic Authentication in Minimal Web API](https://dotnetthoughts.net/implementing-basic-authentication-in-minimal-webapi/)
 - [An authentication scheme that "does nothing"](https://stackoverflow.com/a/55600487)
+- [A clean way to add Swagger to ASP.NET Core application](https://www.talkingdotnet.com/clean-way-to-add-swagger-asp-net-core-application/)
