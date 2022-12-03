@@ -6,12 +6,14 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ApiKeyExtensions
 {
+    /// <summary>
+    /// Add security definition for API Key
+    /// </summary>
+    /// <param name="services"></param>
     public static void AddApiKeySwagger(this IServiceCollection services)
     {
         services.AddSwaggerGen(c =>
         {
-            //c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api Key Auth", Version = "v1" });
-
             c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
             {
                 Description = "API Key must appear in header",
@@ -40,6 +42,11 @@ public static class ApiKeyExtensions
         });
     }
 
+    /// <summary>
+    /// Add API Key authentication
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <returns></returns>
     public static AuthenticationBuilder AddApiKey(this AuthenticationBuilder builder)
     {
         return builder.AddScheme<AuthenticationSchemeOptions, ApiKeyAuthenticationHandler>(

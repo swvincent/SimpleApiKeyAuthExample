@@ -18,6 +18,11 @@ namespace SimpleApiKeyAuthExample.Authentication
         ) : base(options, logger, encoder, clock)
         {}
 
+        /// <summary>
+        /// Handle API Key authentication
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>Not run async - nothing to await</remarks>
         protected override Task<AuthenticateResult> HandleAuthenticateAsync()
         {
             if (!Request.Headers.ContainsKey(ApiKeyDefaults.ApiKeyHeader))
@@ -34,6 +39,11 @@ namespace SimpleApiKeyAuthExample.Authentication
             return Task.FromResult(AuthenticateResult.Success(CreateTicket()));
         }
 
+        /// <summary>
+        /// Create barebones authentication ticket
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>Very simple as this example doesn't require much</remarks>
         private AuthenticationTicket CreateTicket()
         {
             var principal = new ClaimsPrincipal(
