@@ -12,3 +12,4 @@ The folloiwng were helpful:
 - [Implementing Basic Authentication in Minimal Web API](https://dotnetthoughts.net/implementing-basic-authentication-in-minimal-webapi/)
 - [An authentication scheme that "does nothing"](https://stackoverflow.com/a/55600487)
 - [A clean way to add Swagger to ASP.NET Core application](https://www.talkingdotnet.com/clean-way-to-add-swagger-asp-net-core-application/)
+- [How to read appsettings in ASP.Net Core 3.0 / .NET 6](https://stackoverflow.com/a/58432834)
